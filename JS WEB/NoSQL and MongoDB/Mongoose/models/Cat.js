@@ -24,7 +24,7 @@ catSchema.methods.greet = function () {
 
 //virtual property - two ways
 //1:
-catSchema.virtual('info').get(function() {
+catSchema.virtual('info').get(function () {
     return `My name is ${this.name} am I\'m ${this.age} years old.`
 });
 //2:
@@ -33,6 +33,11 @@ catSchema.virtual('info').get(function() {
 // catSchema.virtuals = function() {
 
 // }
+
+//static property
+catSchema.static('giveMeCats', function () {
+    return this.find();
+});
 
 const Cat = mongoose.model('Cat', catSchema);
 

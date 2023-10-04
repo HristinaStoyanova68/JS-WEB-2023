@@ -18,6 +18,10 @@ async function connectDb() {
 
     //using virtual property
     cats.forEach(cat => console.log(cat.info)); 
+
+    //using static property
+    const result = await Cat.giveMeCats();
+    console.log(result);
 }
 
 connectDb();
