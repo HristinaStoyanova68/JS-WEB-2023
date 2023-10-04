@@ -13,7 +13,11 @@ async function connectDb() {
     console.log('y');
     console.log(cats);
 
+    //using method property
     cats.forEach(cat => cat.greet());
+
+    //using virtual property
+    cats.forEach(cat => console.log(cat.info)); 
 }
 
 connectDb();

@@ -20,6 +20,18 @@ catSchema.methods.greet = function () {
     console.log(`Hello I\'m cat and my name is ${this.name}`);
 };
 
+//virtual property - two ways
+//1:
+catSchema.virtual('info').get(function() {
+    return `My name is ${this.name} am I\'m ${this.age} years old.`
+});
+//2:
+
+
+// catSchema.virtuals = function() {
+
+// }
+
 const Cat = mongoose.model('Cat', catSchema);
 
 module.exports = Cat;
