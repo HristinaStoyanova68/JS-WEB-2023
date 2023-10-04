@@ -11,7 +11,7 @@ const catSchema = new mongoose.Schema({
     breed: String
 });
 
-//two ways to use method/s property
+//two ways to use method/s property -instance model method
 //1:
 // catSchema.method('greet', function () {
 //     console.log(`Hello I\'m cat and my name is ${this.name}`);
@@ -22,19 +22,13 @@ catSchema.methods.greet = function () {
     console.log(`Hello I\'m cat and my name is ${this.name}`);
 };
 
-//virtual property - two ways
-//1:
+//virtual property
 catSchema.virtual('info').get(function () {
     return `My name is ${this.name} am I\'m ${this.age} years old.`
 });
-//2:
 
 
-// catSchema.virtuals = function() {
-
-// }
-
-//static property
+//static model method
 catSchema.static('giveMeCats', function () {
     return this.find();
 });
