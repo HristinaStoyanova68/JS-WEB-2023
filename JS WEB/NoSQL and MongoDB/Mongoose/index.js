@@ -70,6 +70,16 @@ async function connectDb() {
 
     // await Person.deleteOne({name: 'Pesho'});
 
+    //find all no Angora cats -two waqys:
+
+    //native mongodb query
+    // const cats = await Cat.find({breed: {$ne: 'Angora'}});
+
+    //mongoose query
+    const cats = await Cat.find().where('breed').ne('Angora');
+
+    console.log(cats);
+
     
 }
 
