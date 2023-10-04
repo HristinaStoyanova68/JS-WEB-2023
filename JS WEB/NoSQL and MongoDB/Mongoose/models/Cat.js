@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const catSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        minLength: 3,
+        maxLegth: 20
     },
     age: Number,
     breed: String
