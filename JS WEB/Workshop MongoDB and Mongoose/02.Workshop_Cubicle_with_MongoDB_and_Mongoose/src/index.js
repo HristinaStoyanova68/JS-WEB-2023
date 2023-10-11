@@ -19,23 +19,4 @@ dbConnect()
 
 app.use(routes);
 
-//Express config
-// app.use(express.static(path.resolve(__dirname, 'public')));
-// app.use(express.static('src/public'));
-
-// //Handlebars config
-// app.engine('hbs', handlebars.engine({
-//     extname: 'hbs',
-
-// }));
-// app.set('view engine', 'hbs');
-// app.set('views', 'src/views');
-
-//Routes
-// app.get('/', (req, res) => {
-//     res.render('index');
-// });
-
-// app.get('/', homeController.getHome);
-
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}...`));

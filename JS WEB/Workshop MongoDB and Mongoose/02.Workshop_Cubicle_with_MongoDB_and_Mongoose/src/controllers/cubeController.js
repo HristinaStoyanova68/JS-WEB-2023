@@ -8,14 +8,15 @@ router.get('/create', (req, res) => {
     res.render('create');
 });
 
-router.post('/create', (req, res) => {
+router.post('/create', async (req, res) => {
     const { 
         name, 
         description, 
         imageUrl, 
         difficultyLevel, 
     } = req.body;
-    cubeManager.create({ 
+
+    await cubeManager.create({ 
         name, 
         description, 
         imageUrl, 
