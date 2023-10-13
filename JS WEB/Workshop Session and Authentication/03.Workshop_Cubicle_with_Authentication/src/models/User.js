@@ -14,6 +14,8 @@ const userSchema = new mongoose.Schema({
     },
 });
 
+//TODO validate if user exist
+
 userSchema.virtual('repeatPassword').set(function(value) {
     if (value !== this.password) {
         throw new mongoose.MongooseError('Password missmatch!');
