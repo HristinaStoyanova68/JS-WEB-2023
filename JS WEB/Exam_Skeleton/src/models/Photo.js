@@ -21,6 +21,10 @@ const photoSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Image is required!']
     },
+    owner: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+    },
 });
 
 const Photo = new mongoose.model('Photo', photoSchema);

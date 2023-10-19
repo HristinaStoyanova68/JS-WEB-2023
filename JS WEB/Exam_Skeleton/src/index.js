@@ -4,7 +4,6 @@ const expressConfig = require('./config/expressConfig');
 const handlebarsConfig = require('./config/handlebarsConfig');
 const dbConnect = require('./config/dbConfig');
 const routes = require('./routes');
-const {errorHandler} = require('./middlewares/errorHandlerMiddleware');
 
 const app = express();
 const PORT = 3000;
@@ -19,7 +18,6 @@ dbConnect()
     });
 
 app.use(routes);
-app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server is listening on port: ${PORT}...`));
 
