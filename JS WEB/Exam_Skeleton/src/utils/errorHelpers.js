@@ -1,19 +1,11 @@
-const { MongooseError } = require('mongoose');
+const { MongooseError, Error } = require('mongoose');
 
 exports.extractErrorMessages = (error) => {
-    // if (error instanceof MongooseError) {
-    //     return Object.values(error.errors).map(x => x.message);
-    // } else if (error) {
-    //     return [error.message];
-    // }
 
-    if (error.code === 11000) {
-        return ['This username already exists'];
-    } 
+    if (error instanceof MongooseError || error instanceof Error.ValidatorError) {
+            return Object.values(error.errors)[0].message;
+    } else {
 
-    if (error instanceof MongooseError) {
-            return Object.values(error.errors).map(x => x.message);
+        return error.message;
     }
-
-    return [error.message];
 }

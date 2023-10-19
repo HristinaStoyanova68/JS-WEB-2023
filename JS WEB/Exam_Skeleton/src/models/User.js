@@ -9,6 +9,16 @@ const userSchema = new mongoose.Schema({
         match: [/^[A-Za-z0-9]+$/, 'Username must be alphanumeric!'],
         unique: true,
     },
+    email: {
+        type: String,
+        required: [true, 'Email is required!'],
+        validate: {
+            validator: function (value) {
+                return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/.test(value);
+            },
+            message: 'Invalid email address!',
+        }
+    },
     password: {
         type: String,
         required: [true, 'Password is required!'],
@@ -20,16 +30,7 @@ const userSchema = new mongoose.Schema({
             message: 'Invalid password characters!',
         },
         minLength: [8, 'Password is too short!'],
-    }, 
-    email: {
-        type: String,
-        required: [true, 'Email is required!'],
-        validate: {
-            validator: function (value) {
-                return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/.test(value);
-            }
-        }
-    }
+    },     
 });
 
 userSchema.virtual('repeatPassword').set(function(value) {

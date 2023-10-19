@@ -1,8 +1,8 @@
 const jwt = require('../lib/jwt');
-const {SECRET} = require('../config/config');
+const {SECRET, TOKEN_KEY} = require('../config/config');
 
 exports.auth = async (req, res, next) => {
-    const token = req.cookies['auth'];
+    const token = req.cookies[TOKEN_KEY];
 
     if (token) {
         //validate token
@@ -15,7 +15,7 @@ exports.auth = async (req, res, next) => {
 
             next();
         } catch (err) {
-            res.clearCookie('auth');
+            res.clearCookie(TOKEN_KEY);
 
             res.redirect('/users/login');
         }

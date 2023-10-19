@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
 const userManager = require('../managers/userManager');
-const {extractErrorMessages} = require('../utils/errorHelpers');
+const { extractErrorMessages } = require('../utils/errorHelpers');
+const { TOKEN_KEY } = require('../config/config');
 
 router.get('/register', (req, res) => {
     res.render('users/register');
@@ -14,13 +15,19 @@ router.post('/register', async (req, res) => {
         await userManager.register({username, email, password, repeatPassword});
 
         res.redirect('/users/login');
+
+        //if is necessary to be logged directly
+
+        // const token = await userManager.register({ username, email, password, repeatPassword });
+
+        // res.cookie(TOKEN_KEY, token, { httpOnly: true });
+
+        // res.redirect('/');
     } catch (err) {
-        const errorMessages = extractErrorMessages(err);
-        res.status(404).render('users/register', {errorMessages: errorMessages});
+        
+        res.render('users/register', { error: extractErrorMessages(err), username, email });
 
-        console.log(errorMessages);
     }
-
 });
 
 router.get('/login', (req, res) => {
@@ -28,25 +35,24 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const {username, password} = req.body;
+    const { username, password } = req.body;
 
     try {
-    const token = await userManager.login(username, password);
+        const token = await userManager.login(username, password);
 
-    res.cookie('auth', token, {httpOnly: true});
+        res.cookie(TOKEN_KEY, token, { httpOnly: true });
 
-    res.redirect('/');
-        
+        res.redirect('/');
+
     } catch (err) {
-        const errorMessages = extractErrorMessages(err);
-        res.status(404).render('users/login', {errorMessages: errorMessages});
 
-        console.log(errorMessages);
+        res.render('users/login', { error: extractErrorMessages(err) });
+
     }
 });
 
 router.get('/logout', (req, res) => {
-    res.clearCookie('auth');
+    res.clearCookie(TOKEN_KEY);
     res.redirect('/');
 })
 
