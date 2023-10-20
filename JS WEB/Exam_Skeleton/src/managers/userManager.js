@@ -16,7 +16,7 @@ exports.register = async (userData) => {
     const token = await generateToken(createdUser, SECRET);
 
     return token;
-}
+};
 
 exports.login = async (username, password) => {
     //TODO find user by username
@@ -36,4 +36,6 @@ exports.login = async (username, password) => {
     const token = await generateToken(user, SECRET);
 
     return token;
-}
+};
+
+exports.getUserById = (userId) => User.findById(userId);

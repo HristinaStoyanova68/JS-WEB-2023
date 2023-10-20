@@ -65,8 +65,18 @@ router.post('/:photoId/edit', async (req, res) => {
 
         res.redirect(`/photos/catalog/${photoId}/details`);
     } catch (err) {
-        res.render('photos/edit', {photoData, error: 'Unsuccessfully updated photo'});
+        res.render('photos/edit', { photoData, error: 'Unsuccessfully updated photo' });
     }
+});
+
+router.post('/catalog/:photoId/comments', async (req, res) => {
+    const photoId = req.params.photoId;
+    const { comment } = req.body;
+    const userId = req.user._id;
+
+    await photoManager.addComment(photoId, {user: userId, comment});
+
+    res.redirect(`/photos/catalog/${photoId}/details`);
 })
 
 module.exports = router;

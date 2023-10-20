@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const userManager = require('../managers/userManager');
+const photoManager = require('../managers/photoManager');
 const { extractErrorMessages } = require('../utils/errorHelpers');
 const { TOKEN_KEY } = require('../config/config');
 
@@ -48,6 +49,18 @@ router.post('/login', async (req, res) => {
 router.get('/logout', (req, res) => {
     res.clearCookie(TOKEN_KEY);
     res.redirect('/');
+});
+
+router.get('/:userId/profile', async (req, res) => {
+    const userId = req.params.userId;
+
+    const user = await userManager.getUserById(userId).lean();
+
+    const photos = (await photoManager.getAll().lean()).filter(x => x.owner._id == userId);
+
+    const photosAmount = photos.length;
+
+    res.render('users/profile', {user, photos, photosAmount});
 })
 
 module.exports = router;
