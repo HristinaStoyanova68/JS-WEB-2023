@@ -12,17 +12,11 @@ router.post('/register', async (req, res) => {
     const { username, email, password, repeatPassword } = req.body;
 
     try {
-        await userManager.register({username, email, password, repeatPassword});
+        const token = await userManager.register({ username, email, password, repeatPassword });
 
-        res.redirect('/users/login');
+        res.cookie(TOKEN_KEY, token, { httpOnly: true });
 
-        //if is necessary to be logged directly
-
-        // const token = await userManager.register({ username, email, password, repeatPassword });
-
-        // res.cookie(TOKEN_KEY, token, { httpOnly: true });
-
-        // res.redirect('/');
+        res.redirect('/');
     } catch (err) {
         
         res.render('users/register', { error: extractErrorMessages(err), username, email });

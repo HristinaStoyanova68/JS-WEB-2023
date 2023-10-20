@@ -11,15 +11,11 @@ exports.register = async (userData) => {
         throw new Error('Username already exists!');
     }
 
-    return User.create(userData);
+    const createdUser = await User.create(userData);
 
-    //if is necessary to be logged directly
+    const token = await generateToken(createdUser, SECRET);
 
-    // const createdUser = await User.create(userData);
-
-    // const token = await generateToken(createdUser, SECRET);
-
-    // return token;
+    return token;
 }
 
 exports.login = async (username, password) => {
