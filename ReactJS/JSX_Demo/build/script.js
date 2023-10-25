@@ -32,11 +32,6 @@ var headerJSX = React.createElement(
         'p',
         null,
         'something else here'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'This is my FIRST SUCCESS!!!'
     )
 );
 

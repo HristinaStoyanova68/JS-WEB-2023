@@ -21,7 +21,6 @@ const headerJSX = (
         <h2>JSX is cool!2</h2>
 
         <p>something else here</p>
-        <p>This is my FIRST SUCCESS!!!</p>
     </header>
 );
 
