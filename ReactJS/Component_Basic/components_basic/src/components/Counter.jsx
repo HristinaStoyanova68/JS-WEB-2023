@@ -20,17 +20,24 @@ export default function Counter(props) {
     // }
 
     //Use Operators like if Conditional Rendering
-    let warning = null;
+    // let warning = null;
 
-    if (count < 0) {
-        warning = <p>Invalid Counter</p>
-    }
+    // if (count < 0) {
+    //     warning = <p>Invalid Counter</p>
+    // }
 
     return (
         <div>
             <h3>Counter</h3>
 
-            {warning}
+            {/* {warning} */}
+
+        {/* use ternary operator: */}
+            {count < 0
+            ? <p>Invalid Counter</p>
+            : null
+
+            }
 
             <p>Count: { count }</p>
 
