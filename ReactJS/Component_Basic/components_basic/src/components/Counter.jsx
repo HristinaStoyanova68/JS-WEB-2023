@@ -35,9 +35,12 @@ export default function Counter(props) {
         {/* use ternary operator: */}
             {count < 0
             ? <p>Invalid Counter</p>
-            : null
-
+            : <p>Valid counter</p>
             }
+
+            {/* use boolean operators */}
+            {count == 0 && <p>Please start Incrementing</p>}
+
 
             <p>Count: { count }</p>
 
