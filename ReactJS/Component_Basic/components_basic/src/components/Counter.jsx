@@ -67,7 +67,7 @@ export default function Counter(props) {
 
             <p>Count: {count}</p>
 
-            <button onClick={() => setCount(count - 1)}>-</button>
+            <button disabled={count < 0} onClick={() => setCount(count - 1)}>-</button>
             <button onClick={clearCounterHandler}>clear</button>
             <button onClick={incrementClickHandler}>+</button>
         </div>
