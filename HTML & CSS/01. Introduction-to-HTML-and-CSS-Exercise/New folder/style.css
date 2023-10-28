@@ -1,0 +1,32 @@
+body {
+    background: blueviolet;
+    color: green;
+}
+
+p {
+    color: black;
+}
+
+a {
+    color: white;
+}
+
+a[href^="https://"] {
+    color: orange;
+}
+
+.box {
+    background: whitesmoke;
+}
+            
+.warning {
+    color: red;
+}
+.fancy {
+    border: 2px solid purple;
+}
+
+#header_my-first-HTML {
+    font-size: 80px;
+}
+        
