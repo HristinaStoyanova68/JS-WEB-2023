@@ -1,18 +1,18 @@
 import Header from "./components/Header";
-import ManAndWomanFashion from "./components/ManAndWomanFashion";
-import Electronic from "./components/Electronic";
-import Jewellery from "./components/Jewellery";
 import Footer from "./components/Footer";
 import CopyRight from "./components/CopyRight";
+import Bouquets from "./components/Bouquets";
+import Decoration from "./components/Decoration";
+import GiftBoxes from "./components/GiftBoxes";
 
 function App() {
   
   return (
     <div>
       <Header />         
-      <ManAndWomanFashion />      
-      <Electronic />      
-      <Jewellery />      
+      <Bouquets />      
+      <Decoration />      
+      <GiftBoxes />      
       <Footer />          
       <CopyRight />      
     </div>    
