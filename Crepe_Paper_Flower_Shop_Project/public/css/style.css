@@ -32,6 +32,7 @@ body {
     font-weight: normal;
     overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
+    font-style: italic;
 }
 
 a {
@@ -486,10 +487,11 @@ a:hover {
 .banner_taital {
     width: 100%;
     font-size: 60px;
-    color: rgb(255, 0, 128);
+    color: rgb(207, 227, 146);
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
+    -webkit-text-stroke: 2.5px #000;
 }
 
 .buynow_bt {
