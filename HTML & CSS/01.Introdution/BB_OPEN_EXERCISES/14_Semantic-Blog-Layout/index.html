@@ -7,11 +7,9 @@
     <title>Semantic Blog Layout</title>
 </head>
 <body>
-    <header>
-        
-
+    <header class="mainHeader">
+        <h1>Developer News</h1>
         <nav>
-            <h1>Developer News</h1>
             <ul>
                 <li>
                     <a href="#">HTML</a>
@@ -26,9 +24,11 @@
     <main>
 
         <section>
-            <h2>HTML</h2>
+            <header>
+                <h2>HTML</h2>
+            </header>
             <article>
-                <h3>New feature: JPEG XL image format</h3>
+                <h4>New feature: JPEG XL image format</h4>
 
                 <p>
                     JPEG XL image format is a modern image format optimized for web environments. JPEG XL generally has better compression than WebP, JPEG, PNG and GIF and is designed to supersede them.
@@ -37,12 +37,12 @@
                     Learn more at: <a href="https://en.wikipedia.org/wiki/JPEG_XL">https://en.wikipedia.org/wiki/JPEG_XL</a>
                 </p>
                 <p>
-                    By The HTTP Working Group. Published January 23rd
+                    By The HTTP Working Group. Published <time>January 23rd</time>
                 </p>
 
             </article>
             <article>
-                <h3>New feature: Cookie Store API</h3>
+                <h4>New feature: Cookie Store API</h4>
 
                 <p>
                     Cookie Store API is a JS API for reading and modifying cookies. Compared to the existing `document.cookie` method, the API provides a much more modern interface, which can also be used in service workers.
@@ -51,24 +51,26 @@
                     Learn more at: <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/cookies/CookieStore">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/cookies/CookieStore</a>
                 </p>
                 <p>
-                    By Joshua Bell. Published December 15th
+                    By Joshua Bell. Published <time>December 15th</time>
                 </p>
             </article>
         </section>
 
         <section>
-            <h2>JavaScript</h2>
+            <header>
+                <h2>JavaScript</h2>
+            </header>
             <article>
                 <h3>Billboard.js 3.0: The D3.js-Powered Chart Library</h3>
 
                 <p>
-                    Billboard.js is a popular library supporting a whole range of chart types out of the box (bar, line, areas, donuts, radars, and various hybrids) – 3.0 brings candlestick / OHLC chart support (often used in financial contexts) and supports D3.js v6.
+                    Billboard.js is a popular library supporting a whole range of chart types out of the box (bar, line, areas, donuts, radars, and various hybrids) - 3.0 brings candlestick / OHLC chart support (often used in financial contexts) and supports D3.js v6.
                 </p>
                 <p>
                     Learn more at: <a href="https://github.com/naver/billboard.js">https://github.com/naver/billboard.js</a>
                 </p>
                 <p>
-                    By Jae Sung Park. Published March 24th
+                    By Jae Sung Park. Published <time>March 24th</time>
                 </p>
             </article>
             <article>
@@ -81,7 +83,7 @@
                     Learn more at: <a href="https://www.sitepoint.com/javascript-typescript-orms/">https://www.sitepoint.com/javascript-typescript-orms/</a>
                 </p>
                 <p>
-                    By Michael Wanyoike. Published March 31rd
+                    By Michael Wanyoike. Published <time>March 31rd</time>
                 </p>
             </article>
         </section>
@@ -91,7 +93,7 @@
         <p>&copy; 2021 DeveloperNewsPortal.info</p>
 
         <p>
-            Please contact Troy McClure for questions about these articles.
+            Please contact <a href="#">Troy McClure</a> for questions about these articles.
         </p>
     </footer>
 </body>

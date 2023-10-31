@@ -2,7 +2,7 @@ body{
     background-color:#b7d7e8; 
 }
 
-header { 
+.mainHeader{ 
     border-radius: 3px; 
     padding: 8px 10px; 
     background-color: #dceaf4;
@@ -12,6 +12,12 @@ header {
 header * { 
     display: inline; 
     vertical-align: middle; 
+}
+
+section header {
+    border-radius: 3px; 
+    padding: 8px 10px; 
+    background-color:#b7d7e8; 
 }
 
 nav ul {
