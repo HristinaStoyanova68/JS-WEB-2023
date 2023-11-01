@@ -1,0 +1,5 @@
+
+article :first-child {
+    font-weight: bold;
+    color: red;
+}
