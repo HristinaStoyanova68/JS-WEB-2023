@@ -15,6 +15,10 @@ export default function TodoList() {
         .catch(err => console.log(err))
     }, []);
 
+    const changeStatusHandler = (todoId) => {
+        setTodos(state => state.map(todo => todo._id === todoId ? {...todo, isCompleted: !todo.isCompleted} : todo));
+    }
+
     return (
 
         <section className="todo-list-container">
@@ -45,7 +49,17 @@ export default function TodoList() {
                     <tbody>
 
                         {/* Todo item  */}
-                        <TodoItem />
+
+                        {todos.map(todo => (
+                            <TodoItem 
+                                _id={todo._id}
+                                key={todo._id}
+                                text={todo.text}
+                                isCompleted={todo.isCompleted}
+                                changeStatusHandler={changeStatusHandler}
+                            />
+                        ))}
+                        
                     </tbody>
                 </table>
             </div>

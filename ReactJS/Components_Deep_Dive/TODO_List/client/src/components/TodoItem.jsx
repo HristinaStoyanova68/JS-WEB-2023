@@ -1,11 +1,20 @@
-export default function TodoItem(props) {
-    return (
-        <tr className="todo is-completed">
-            <td>Give dog a bath</td>
-            <td>Complete</td>
-            <td className="todo-action">
-                <button className="btn todo-btn">Change status</button>
-            </td>
-        </tr>
-    );
-}
+export default function TodoItem({
+        _id,
+        text, 
+        isCompleted,
+        changeStatusHandler
+    }) {
+        const onChangeStatusClick = () => {
+            changeStatusHandler(_id);
+        }
+
+        return (
+            <tr className={`todo${isCompleted ? ' is-completed' : ''}`}>
+                <td>{text}</td>
+                <td>{isCompleted ? 'Completed' : 'Incompleted'}</td>
+                <td className="todo-action">
+                    <button onClick={onChangeStatusClick} className="btn todo-btn">Change status</button>
+                </td>
+            </tr>
+        );
+    }
