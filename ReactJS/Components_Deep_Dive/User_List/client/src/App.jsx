@@ -10,12 +10,12 @@ function App() {
             <Header />
 
             <main className="main">
-    {/* Section component */}
-    <UserList />
+                <UserList />
 
-    
+                
 
-  </main>
+            </main>
+
             <Footer />
         </div>
     )
