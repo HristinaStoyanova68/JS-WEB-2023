@@ -5,12 +5,14 @@ import * as userService from '../services/userService'
 import UserListItem from "./UserListItem";
 import CreateUserModal from "./CreateUserModal";
 import UserInfoModal from "./UserInfoModal";
+import UserDeleteModal from "./UserDeleteModal";
 
 const UserListTable = () => {
     const [users, setUsers] = useState([]);
     const [showCreate, setShowCreate] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [showDelete, setShowDelete] = useState(false);
 
     useEffect(() => {
         userService.getAll()
@@ -51,6 +53,23 @@ const UserListTable = () => {
 
         setSelectedUser(userId);
         setShowInfo(true);
+    };
+
+    const deleteUserClickHandler = async (userId) => {
+
+        setSelectedUser(userId);
+        setShowDelete(true);
+    }
+
+    const deleteUserHandler = async () => {
+        //remove user from server
+        await userService.remove(selectedUser);
+
+        //remove user from state
+        setUsers(state => state.filter(user => user._id !== selectedUser));
+
+        //close the delete modal
+        setShowDelete(false);
     }
 
     return (
@@ -62,11 +81,18 @@ const UserListTable = () => {
             onUserCreate={userCreateHandler}
             />)}
 
-            {showInfo && (<UserInfoModal 
+            {showInfo && (
+            <UserInfoModal 
                 onClose={() => setShowInfo(false)}
                 userId={selectedUser}
                 />
             )}
+
+            {showDelete && (
+            <UserDeleteModal 
+                onClose={() => setShowDelete(false)}
+                onDelete={deleteUserHandler}
+            />)}
         
         <table className="table">
           <thead>
@@ -136,7 +162,7 @@ const UserListTable = () => {
                         lastName={user.lastName}
                         phoneNumber={user.phoneNumber}
                         onInfoClick={userInfoClickHandler}
-
+                        onDeleteClick={deleteUserClickHandler}
                     />
                    ))}
                         

@@ -15,7 +15,7 @@ export const getOne = async (userId) => {
     const result = await response.json();
 
     return result;
-}
+};
 
 export const create = async (data) => {
 
@@ -40,6 +40,16 @@ export const create = async (data) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
+    });
+
+    const result = await response.json();
+
+    return result;
+};
+
+export const remove = async (userId) => {
+    const response = await fetch(`${baseUrl}/${userId}`, {
+        method: 'DELETE',
     });
 
     const result = await response.json();

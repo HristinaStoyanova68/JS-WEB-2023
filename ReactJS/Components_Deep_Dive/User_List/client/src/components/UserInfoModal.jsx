@@ -7,7 +7,7 @@ const UserInfoModal = ({
     userId,
     onClose,
 }) => {
-    const [userDetails, setUserDetails] = useState({ address: {} });
+    const [userDetails, setUserDetails] = useState({});
 
     useEffect(() => {
         userService.getOne(userId)
@@ -45,7 +45,7 @@ const UserInfoModal = ({
                             <p>Phone Number: <strong>{userDetails.phoneNumber}</strong></p>
                             <p>
                                 Address:
-                                <strong> {userDetails.address.country}, {userDetails.address.city}, {userDetails.address.street} {userDetails.address.streetNumber} </strong>
+                                <strong> {userDetails.address?.country}, {userDetails.address?.city}, {userDetails.address?.street} {userDetails.address?.streetNumber} </strong>
                             </p>
 
                             <p>Created on: <strong>{formatDateToCustomFormat(userDetails.createdAt)}</strong></p>
