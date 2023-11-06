@@ -94,3 +94,24 @@ blockquote p.author:before {
     padding-right: 0.5em;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    border: 2px solid grey;
+    padding: 0.5em;
+}
+
+img[class^="align"] {
+    margin-bottom: 0.5em;
+}
+
+img.align-left {
+    float: left;
+    margin-right: 1em;
+}
+
+img.align-right {
+    float: right;
+    margin-left: 1em;
+}
+
