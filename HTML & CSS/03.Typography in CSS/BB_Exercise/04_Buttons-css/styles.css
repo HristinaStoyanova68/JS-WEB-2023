@@ -18,18 +18,19 @@ a {
     border-radius: 5em;
     padding: 0.5em 1em;
     cursor: pointer;
-}
 
-.button.hover:hover {
-    color: rgb(0, 102, 0);
-    border-color: rgb(0, 102, 0);
-    background-color: white;
 }
 
 .fill {
     background-color: rgb(51, 51, 51);
     color: rgb(251, 251, 251);
     border: none;
+}
+
+.button.hover:hover {
+    color: rgb(0, 102, 0);
+    border-color: rgb(0, 102, 0);
+    background-color: white;
 }
 
 .button.fill.hover:hover {
