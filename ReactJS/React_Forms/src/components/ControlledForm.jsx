@@ -11,6 +11,8 @@ const usernameChangeHandler = (e) => {
 
 const resetFormHandler = () => {
     setUsernameValue('');
+    setPasswordValue('');
+    setAgeValue('');
 }
 
 const usernameBlurHandler = () => {
@@ -34,14 +36,27 @@ const ageBlurHandler = () => {
     console.log('On Blur');
 }
 
-console.log(usernameValue);
-console.log(passwordValue);
-console.log(ageValue);
+// const submitHandler = (e) => {
+//     e.preventDefault();
+
+//     console.log(usernameValue);
+//     console.log(passwordValue);
+//     console.log(ageValue);
+// }
+
+const submitHandler = () => {
+    
+    console.log(usernameValue);
+    console.log(passwordValue);
+    console.log(ageValue);
+    resetFormHandler();
+}
 
     return (
         <>
             <h1>Controlled Form</h1>
 
+            {/* <form onSubmit={submitHandler}> */}
             <form>
                 <div>
                     <label htmlFor="username">Username</label>
@@ -77,7 +92,7 @@ console.log(ageValue);
                     />
                 </div>
                 <div>
-                    <button>Register</button>
+                    <button type="button" onClick={submitHandler}>Register</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
                 </div>
 
