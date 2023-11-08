@@ -4,28 +4,53 @@ const formInitialState = {
     username: '',
     password: '',
     age: '',
+    gender: 'm',
+    swimming: false,
+    shopping: false,
+    knitting: false,
 };
 
 export default function ControlledFormRaw () {
 const [formValues, setFormValues] = useState(formInitialState);
 
 const changeHandler = (e) => {
+    let value = '';
+
+    switch (e.target.type) {
+        case 'number':
+            value = Number(e.target.value);
+            break;
+        case 'checkbox':
+            value = e.target.checked;
+            break;
+        default:
+            value = e.target.value;
+            break;
+    }
 
     setFormValues(state => ({
         ...state,
         [e.target.name]: [e.target.value],
-    }))
+    }));
 }
 
 const resetFormHandler = () => {
     setFormValues(formInitialState);
-}
+};
 
 const submitHandler = () => {
     
-    console.log(formValues);
+    // console.log(formValues);
     resetFormHandler();
-}
+};
+
+// const onCheckboxChange = (e) => {
+//     setFormValues(state => ({
+//         ...state,
+//         [e.target.name]: [e.target.checked]
+//     }));
+// }
+// console.log(formValues);
 
     return (
         <>
@@ -63,6 +88,25 @@ const submitHandler = () => {
                         onChange={changeHandler}
                     />
                 </div>
+
+                <div>
+                    <label htmlFor="gender">Gender</label>
+                    <select name="gender" id="gender" value={formValues.gender} onChange={changeHandler}>
+                        <option value="m">M</option>
+                        <option value="f">F</option>
+                    </select>
+                </div>
+
+                <div>
+                    <h3>Hobbies</h3>
+                    <label htmlFor="swimming">Swimming</label>
+                    <input type="checkbox" name="swimming" id="swimming" checked={formValues.swimming} onChange={changeHandler}/>
+                    <label htmlFor="shopping">Shopping</label>
+                    <input type="checkbox" name="shopping" id="shopping" checked={formValues.shopping} onChange={changeHandler}/>
+                    <label htmlFor="knitting">Knitting</label>
+                    <input type="checkbox" name="knitting" id="knitting" checked={formValues.knitting} onChange={changeHandler}/>
+                </div>
+
                 <div>
                     <button type="button" onClick={submitHandler}>Register</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
