@@ -1,12 +1,13 @@
 const Contacts = () => {
     return (
         <>
-
         <h2>Contact Page</h2>
-        <ul>
-            <p>Phone: 123456</p>
-            <p>Email: mama@abv.bg</p>
-        </ul>
+        
+        <label htmlFor="">Title</label><br/>
+        <input type="text" /><br/>
+        <label htmlFor="">Description</label><br/>
+        <textarea name="" id="" cols="30" rows="10"></textarea><br/>
+        <input type="submit" value="Submit"/>
         </>
     );
 };
