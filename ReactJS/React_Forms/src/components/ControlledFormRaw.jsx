@@ -1,4 +1,6 @@
 import { useState } from "react";
+import styles from './ControlledFormRaw.module.css'
+
 
 const formInitialState = {
     username: '',
@@ -8,11 +10,12 @@ const formInitialState = {
     swimming: false,
     shopping: false,
     knitting: false,
+
 };
 
 export default function ControlledFormRaw () {
 const [formValues, setFormValues] = useState(formInitialState);
-
+const [ageError, setAgeError] = useState('');
 const changeHandler = (e) => {
     let value = '';
 
@@ -30,7 +33,7 @@ const changeHandler = (e) => {
 
     setFormValues(state => ({
         ...state,
-        [e.target.name]: [e.target.value],
+        [e.target.name]: value,
     }));
 }
 
@@ -43,6 +46,13 @@ const submitHandler = () => {
     // console.log(formValues);
     resetFormHandler();
 };
+
+const ageValidator = () => {
+
+    if (formValues.age < 0 || formValues.age > 120) {
+        setAgeError('Age should be between 0 and 120');
+    }
+}
 
 // const onCheckboxChange = (e) => {
 //     setFormValues(state => ({
@@ -86,7 +96,11 @@ const submitHandler = () => {
                         id="age"
                         value={formValues.age} 
                         onChange={changeHandler}
+                        onBlur={ageValidator}
                     />
+                    {ageError && (
+                        <p className={styles.errorMessage}>{ageError}</p>
+                    )}
                 </div>
 
                 <div>
