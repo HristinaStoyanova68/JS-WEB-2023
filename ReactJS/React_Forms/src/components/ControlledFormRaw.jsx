@@ -15,7 +15,9 @@ const formInitialState = {
 
 export default function ControlledFormRaw () {
 const [formValues, setFormValues] = useState(formInitialState);
-const [ageError, setAgeError] = useState('');
+const [errors, setErrors] = useState({});
+
+
 const changeHandler = (e) => {
     let value = '';
 
@@ -39,6 +41,7 @@ const changeHandler = (e) => {
 
 const resetFormHandler = () => {
     setFormValues(formInitialState);
+    setErrors({});
 };
 
 const submitHandler = () => {
@@ -50,7 +53,17 @@ const submitHandler = () => {
 const ageValidator = () => {
 
     if (formValues.age < 0 || formValues.age > 120) {
-        setAgeError('Age should be between 0 and 120');
+        setErrors(state => ({
+            ...state,
+            age:'Age should be between 0 and 120',
+        }));
+    } else {
+        if (errors.age) {
+            setErrors(state => ({
+                ...state,
+                age: '',
+            }));
+        }
     }
 }
 
@@ -97,9 +110,10 @@ const ageValidator = () => {
                         value={formValues.age} 
                         onChange={changeHandler}
                         onBlur={ageValidator}
+                        className={errors.age && styles.inputError}
                     />
-                    {ageError && (
-                        <p className={styles.errorMessage}>{ageError}</p>
+                    {errors.age && (
+                        <p className={styles.errorMessage}>{errors.age}</p>
                     )}
                 </div>
 
@@ -122,7 +136,7 @@ const ageValidator = () => {
                 </div>
 
                 <div>
-                    <button type="button" onClick={submitHandler}>Register</button>
+                    <button type="button" disabled={Object.values(errors).some(x => x)} onClick={submitHandler}>Register</button>
                     <button type="button" onClick={resetFormHandler}>Reset</button>
                 </div>
 
