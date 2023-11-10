@@ -1,16 +1,29 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 const base_url = 'https://swapi.dev/api/people';
 
 const CharacterDetails = () => {
     const { id } = useParams();
+    const location = useLocation();
+    const navigate = useNavigate();
     const [character, setCharacter] = useState({});
+
+    console.log(location.pathname);
 
     useEffect(() => {
         fetch(`${base_url}/${id}`)
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Not Found');
+            }
+
+            return res.json();
+        })
         .then(setCharacter)
+        .catch((err) => {
+            navigate('/characters');
+        })
     }, [id])
 
     const name = 'Unknown';
