@@ -72,11 +72,14 @@ p, ul, ol {
     padding: 0.5em 1em;
     margin: 0.2em;
     background-color: whitesmoke;
+    border-radius: 2em;
+
 }
 
 .main-nav a:hover {
     background: rgb(119, 0, 255);
     color: aliceblue;
+
 }
 
 .main-nav ul {
