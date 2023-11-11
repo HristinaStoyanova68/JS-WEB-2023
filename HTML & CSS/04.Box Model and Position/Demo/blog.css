@@ -1,0 +1,88 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+/* Typography */
+
+body, table, input, textarea {
+    font: 14px/1.5 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p, ul, ol {
+    padding-bottom: 1.5em;
+}
+
+/* Layout */
+
+.site {
+    max-width: 45em;
+    margin: 2em auto;
+    background-color: #eabfbf;
+    border-radius: 0.5em;
+    padding: 2em;
+}
+
+.site-header {
+    border-bottom: 2px solid #333;
+    position: relative;
+}
+
+.main-nav {
+    margin-left: 5em;
+    position: absolute;
+    bottom: 1em;
+    right: 0;
+    border-radius: 0.3em;
+
+}
+
+.site-title a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 2em;
+    padding-bottom: 0.3em;
+}
+
+.site-footer {
+    padding-top: 0.5em;
+    border-top: 2px solid #333;
+}
+
+.site-footer p:last-child {
+    padding: 0;
+}
+
+.main-nav a {
+    display: block;
+    text-decoration: none;
+    color: rgb(31, 33, 31);
+    padding: 0.5em 1em;
+    margin: 0.2em;
+    background-color: whitesmoke;
+}
+
+.main-nav a:hover {
+    background: rgb(119, 0, 255);
+    color: aliceblue;
+}
+
+.main-nav ul {
+    padding: 0;
+}
+
+.main-nav li {
+    display: inline-block;
+}
