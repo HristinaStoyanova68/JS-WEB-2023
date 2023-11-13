@@ -1,0 +1,7 @@
+html {
+    font: 16px / 1.5em 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body, input, textarea {
+    font: inherit
+}
