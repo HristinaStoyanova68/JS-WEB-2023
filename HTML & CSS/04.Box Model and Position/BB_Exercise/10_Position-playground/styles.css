@@ -1,0 +1,40 @@
+
+.viewport {
+    height: 100vh;
+    position: relative;
+}
+
+.viewport:nth-child(1) {
+    background-color: #369;
+}
+
+.viewport:nth-child(2) {
+    background-color: #693;
+}
+
+.card {
+    width: 10em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.3em;
+    overflow: hidden;
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    height:auto;
+}
+
+.card .inner-shadow {
+    display: block;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+
+
