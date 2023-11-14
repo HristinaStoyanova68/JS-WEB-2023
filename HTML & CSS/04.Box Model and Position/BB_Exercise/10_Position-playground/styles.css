@@ -1,15 +1,14 @@
-
 .viewport {
     height: 100vh;
     position: relative;
 }
 
 .viewport:nth-child(1) {
-    background-color: #369;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(60, 60, 137, 1) 71%, rgba(0, 212, 255, 1) 100%);
 }
 
 .viewport:nth-child(2) {
-    background-color: #693;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(70, 137, 60, 1) 71%, rgba(0, 212, 255, 1) 100%);
 }
 
 .card {
@@ -25,7 +24,7 @@
 .card img {
     display: block;
     width: 100%;
-    height:auto;
+    height: auto;
 }
 
 .card .inner-shadow {
@@ -35,6 +34,3 @@
     bottom: 0;
     right: 0;
 }
-
-
-
