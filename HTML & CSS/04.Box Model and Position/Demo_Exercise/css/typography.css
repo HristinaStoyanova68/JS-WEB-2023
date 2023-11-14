@@ -3,5 +3,9 @@ html {
 }
 
 body, input, textarea {
-    font: inherit
+    font: inherit;
+}
+
+p, ol, ul {
+    padding-bottom: 1.5em;
 }
