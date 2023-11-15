@@ -1,0 +1,26 @@
+.post {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+body > header {
+    position: relative;
+    padding: 0;
+    padding-bottom: 0.8em;
+    margin-left: 2em;
+    margin-right: 2em;
+    border-bottom: 2px solid black;
+    margin-top: 3.5em;
+}
+
+body > main {
+    margin-top: 0;
+}
+
+.main-nav {
+    position: absolute;
+    right: 55%;
+    bottom: 50%;
+    transform: translateY(50%);
+}
