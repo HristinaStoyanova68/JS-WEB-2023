@@ -21,15 +21,17 @@ html {
     background-color: rgb(238, 238, 238);
 }
 
-/* .container {
-    text-align: center;
-} */
+h3 {
+    font-family: Georgia, serif;
+    font-size: 1em/1.2;
+}
 
 .card {
     display: block;
     width: 40em;
     overflow: hidden;
     border-radius: 0.5em;
+    background-color: rgb(255, 255, 255);
     border: 1px solid #CCC;
     transform: scale(0.8);
 }
