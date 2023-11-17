@@ -14,20 +14,41 @@ html {
 body,
 html {
     height: 100%;
-    margin: 0;
+    margin: 0;    
+    background-color: rgb(238, 238, 238);
+}
+
+/* Another way to center the card */
+/* .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(238, 238, 238);
-}
+} */
 
 h3 {
     font-family: Georgia, serif;
     font-size: 1em/1.2;
 }
 
+button {
+    background-color: rgb(0, 153, 0);
+    width: 7em;
+    height: 2.5em;
+    border: 1px solid white;
+    border-radius: 0.5em;
+    margin-left: 75%;    
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    word-spacing: 2px;
+}
+
 .card {
     display: block;
+    /*this is the style that centers the card */
+    margin: 0 auto;
     width: 40em;
     overflow: hidden;
     border-radius: 0.5em;
@@ -36,15 +57,15 @@ h3 {
     transform: scale(0.8);
 }
 
+.media {
+    position: relative;
+    overflow: hidden;
+}
+
 .card img {
     display: block;
     width: 100%;
     height: auto;   
-}
-
-.card .content {
-    padding: 2em;
-    margin: 2em;
 }
 
 .card h3,
@@ -57,15 +78,6 @@ h3 {
     padding-bottom: 1em;
 }
 
-.media {
-    position: relative;
-    overflow: hidden;
-}
-
-.media .after {
-    padding-top: 56.25%;
-}
-
 .media img {
     position: absolute;
     top: 50%;
@@ -73,17 +85,12 @@ h3 {
     transform: translateY(-50%);
 }
 
-button {
-    background-color: rgb(0, 153, 0);
-    width: 7em;
-    height: 2.5em;
-    border: 1px solid white;
-    border-radius: 0.5em;
-    margin-left: 75%;
+.card .content {
+    padding: 2em;
+    margin: 2em;
 }
 
-a {
-    text-decoration: none;
-    color: white;
-    word-spacing: 2px;
+.media .after {
+    padding-top: 56.25%;
 }
+
