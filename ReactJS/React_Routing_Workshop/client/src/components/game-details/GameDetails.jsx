@@ -15,7 +15,7 @@ export default function GameDetails() {
             .then(setGame)
             .catch(err => console.log(err));
 
-        commentService.getAll()
+        commentService.getAll(gameId)
             .then(setComments)
             .catch(err => console.log(err));
     }, [gameId]);
@@ -61,7 +61,7 @@ export default function GameDetails() {
                             </li>
                         ))}
                         {/* <!-- Display paragraph: If there are no games in the database --> */}
-                        {comments === 0 && (
+                        {comments.length === 0 && (
                             <p className="no-comment">No comments.</p>
                         )}
                     </ul>
