@@ -6,13 +6,14 @@ export const getAll = async () => {
     const result = await request.get(baseUrl);
 
     // console.log(result);
-
+    console.log(Object.values(result));
     return Object.values(result);
 }
 
 export const getOne = async (gameId) => {
     const result = await request.get(`${baseUrl}/${gameId}`);
 
+    console.log(result);
     return result;
 }
 

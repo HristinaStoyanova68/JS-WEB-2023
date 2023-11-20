@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
 export default function GameListItem({
+    _id,
     title,
     category,
-    imageUrl,
-    _id
+    imageUrl
 }) {
     return (
         <div className="allGames">
