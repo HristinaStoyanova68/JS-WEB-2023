@@ -8,8 +8,6 @@ import * as commentService from '../../services/commentService';
 export default function GameDetails() {
     const [game, setGame] = useState({});
     const [comments, setComments] = useState([]);
-    const [usernameValue, setUsernameValue] = useState('');
-    const [commentValue, setCommentValue] = useState('');
     const { gameId } = useParams();
 
     useEffect(() => {
@@ -34,25 +32,7 @@ export default function GameDetails() {
 
         setComments(state => [...state, newComment]);
         console.log(newComment);
-        resetFormHandler();
-    };
-
-    const usernameChangeHandler = (e) => {
-        setUsernameValue(e.target.value);
-    };
-
-    const resetFormHandler = () => {
-        setUsernameValue('');
-        setCommentValue('');
-    };
-
-    // const usernameBlurHandler = () => {
-    //     console.log('on blur');
-    // };
-
-    const commentChangeHandler = (e) => {
-        setCommentValue(e.target.value);
-    };
+    }
 
     return (
         <section id="game-details">
@@ -101,22 +81,9 @@ export default function GameDetails() {
             <article className="create-comment">
                 <label>Add new comment:</label>
                 <form className="form" onSubmit={addCommentHandler}>
-                    <input 
-                    type='text' 
-                    name='username' 
-                    placeholder='username'
-                    value={usernameValue}
-                    onChange={usernameChangeHandler}
-                    // onBlur={usernameBlurHandler}
-                    />
-                    <textarea 
-                    name="comment" 
-                    placeholder="Comment......"
-                    value={commentValue}
-                    onChange={commentChangeHandler}
-                    ></textarea>
+                    <input type='text' name='username' placeholder='username' />
+                    <textarea name="comment" placeholder="Comment......"></textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
-                    {/* <button type='button' onClick={resetFormHandler}>Reset</button> */}
                 </form>
             </article>
 
