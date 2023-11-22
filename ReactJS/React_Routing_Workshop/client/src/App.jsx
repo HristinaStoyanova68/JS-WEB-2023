@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import * as authService from './services/authService';
 import AuthContext from './contexts/authContext';
+import Path from './paths';
 
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
@@ -11,7 +12,6 @@ import GameCreate from './components/game-create/GameCreate';
 import Register from './components/register/Register';
 import Login from './components/login/Login';
 import GameDetails from './components/game-details/GameDetails';
-import Path from './paths';
 
 function App() {
     const navigate = useNavigate();
@@ -35,13 +35,20 @@ function App() {
         navigate(Path.Home);
     };
 
+    const values = {
+        loginSubmitHandler,
+        username: auth.username,
+        email: auth.email,
+        isAuthenticated: !!auth.username,
+    }
+
     return (
-        <AuthContext.Provider value={{ loginSubmitHandler }}>
+        <AuthContext.Provider value={values}>
             <div id="box">
                 <Header />
                 <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/games' element={<GameList />} />
+                    <Route path={Path.Home} element={<Home />} />
+                    <Route path={Path.Games} element={<GameList />} />
                     <Route path='/games/create' element={<GameCreate />} />
                     <Route path='/games/:gameId' element={<GameDetails />} />
                     <Route path='/register' element={<Register />} />

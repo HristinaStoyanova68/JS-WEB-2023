@@ -86,7 +86,6 @@ export default function GameDetails() {
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
             </article>
-
         </section>
     );
 }
