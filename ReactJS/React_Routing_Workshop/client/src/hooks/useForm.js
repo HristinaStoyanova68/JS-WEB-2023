@@ -16,5 +16,9 @@ export default function useForm(submitHandler, initialValues) {
         submitHandler(values);
     }
 
-    return {values, onChange,}
+    return {
+        values,
+        onChange,
+        onSubmit
+    };
 }
