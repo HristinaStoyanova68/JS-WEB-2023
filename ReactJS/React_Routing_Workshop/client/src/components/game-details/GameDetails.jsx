@@ -33,7 +33,7 @@ export default function GameDetails() {
         );
 
         setComments(state => [...state, newComment]);
-        console.log(newComment);
+        // console.log(newComment);
         resetFormHandler();
     };
 
@@ -116,7 +116,6 @@ export default function GameDetails() {
                     onChange={commentChangeHandler}
                     ></textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
-                    {/* <button type='button' onClick={resetFormHandler}>Reset</button> */}
                 </form>
             </article>
 
