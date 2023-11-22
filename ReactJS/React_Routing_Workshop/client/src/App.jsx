@@ -61,7 +61,7 @@ function App() {
         loginSubmitHandler,
         username: auth.username || auth.email,
         email: auth.email,
-        isAuthenticated: !!auth.username,
+        isAuthenticated: !!auth.email,
     }
 
     return (
