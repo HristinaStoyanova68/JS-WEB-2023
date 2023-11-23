@@ -12,56 +12,51 @@ import GameCreate from './components/game-create/GameCreate';
 import Register from './components/register/Register';
 import Login from './components/login/Login';
 import GameDetails from './components/game-details/GameDetails';
+import Logout from './components/logout/Logout';
 
 function App() {
     const navigate = useNavigate();
     const [auth, setAuth] = useState({});
 
     const loginSubmitHandler = async (values) => {
-        const {
-            accessToken,
-            email,
-            username,
-            _id,
-        } = await authService.login(values.email, values.password);
+        const result = await authService.login(values.email, values.password);
 
-        setAuth({
-            accessToken,
-            email,
-            username,
-            _id,
-        });
+        setAuth(result);
+
+        localStorage.setItem('accessToken', result.accessToken);
 
         navigate(Path.Home);
     };
 
     const registerSubmitHandler = async (values) => {
         console.log(values);
-        const {
-            accessToken,
-            email,
-            username,
-            _id,
-        } = await authService.register(values.email, values.password);
+        const result = await authService.register(values.email, values.password);
         //TODO validations for passwords
 
-        setAuth({
-            accessToken,
-            email,
-            username,
-            _id,
-        });
+        setAuth(result);
+
+        localStorage.setItem('accessToken', result.accessToken);
+
 
         navigate(Path.Home);
 
+    };
+
+    const logoutHandler = () => {
+        setAuth({});
+
+        localStorage.removeItem('accessToken');
+
+        navigate(Path.Home);
     }
 
     const values = {
         registerSubmitHandler,
         loginSubmitHandler,
+        logoutHandler,
         username: auth.username || auth.email,
         email: auth.email,
-        isAuthenticated: !!auth.email,
+        isAuthenticated: !!auth.accessToken,
     }
 
     return (
@@ -75,11 +70,11 @@ function App() {
                     <Route path='/games/:gameId' element={<GameDetails />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />
-                    {/* <Route path='/games/:id/comments' element={<} */}
+                    <Route path={Path.Logout} element={<Logout />} />
                 </Routes>
             </div>
         </AuthContext.Provider>
     )
 }
 
-export default App
+export default App;
