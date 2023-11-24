@@ -1,13 +1,17 @@
 import * as request from "../lib/request";
 
-const baseUrl = 'http://localhost:3030/jsonstore/games';
+// const baseUrl = 'http://localhost:3030/jsonstore/games'; //JSON Store service from server
+
+const baseUrl = 'http://localhost:3030/data/games'; //Collections service from server
 
 export const getAll = async () => {
     const result = await request.get(baseUrl);
 
     // console.log(result);
     console.log(Object.values(result));
-    return Object.values(result);
+    // return Object.values(result);//JSON Store service from server
+
+    return result;//the server returns array with objects
 }
 
 export const getOne = async (gameId) => {

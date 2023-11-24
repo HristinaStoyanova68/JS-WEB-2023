@@ -30,13 +30,5 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Ultimate_MK3.png/220px-Ultimate_MK3.png",
         "summary": "MK3",
         "_id": "18bfdb21-333b-42bd-a32c-c114263f2569"
-    },
-    "be55e901-293b-4f8c-aebd-b871fda8ae66": {
-        "title": "Super Game",
-        "category": "Fantasy",
-        "maxLevel": "5",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5a/FF_XV_cover_art.jpg",
-        "summary": "Fantasy and Funny Game",
-        "_id": "be55e901-293b-4f8c-aebd-b871fda8ae66"
     }
 }
