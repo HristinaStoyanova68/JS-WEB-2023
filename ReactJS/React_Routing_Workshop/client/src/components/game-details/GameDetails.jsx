@@ -1,14 +1,17 @@
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
+import AuthContext from '../../contexts/authContext';
 
 import * as gameService from '../../services/gameService';
 import * as commentService from '../../services/commentService';
 
 export default function GameDetails() {
+    const { email} = useContext(AuthContext);
     const [game, setGame] = useState({});
     const [comments, setComments] = useState([]);
-    const [usernameValue, setUsernameValue] = useState('');
+    // const [usernameValue, setUsernameValue] = useState('');
     const [commentValue, setCommentValue] = useState('');
     const { gameId } = useParams();
 
@@ -28,21 +31,22 @@ export default function GameDetails() {
 
         const newComment = await commentService.create(
             gameId,
-            formData.get('username'),
+            // formData.get('username'),
             formData.get('comment')
         );
 
-        setComments(state => [...state, newComment]);
+        //setComments(state => [...state, newComment]); //JSON Store service
+        setComments(state => [...state, { ...newComment, author: { email } }]); // Collections service
         // console.log(newComment);
         resetFormHandler();
     };
 
-    const usernameChangeHandler = (e) => {
-        setUsernameValue(e.target.value);
-    };
+    // const usernameChangeHandler = (e) => {
+    //     setUsernameValue(e.target.value);
+    // };
 
     const resetFormHandler = () => {
-        setUsernameValue('');
+        // setUsernameValue('');
         setCommentValue('');
     };
 
@@ -75,9 +79,9 @@ export default function GameDetails() {
                     <h2>Comments:</h2>
                     <ul>
                         {/* <!-- list all comments for current game (If any) --> * */}
-                        {comments.map(({ _id, username, text }) => (
+                        {comments.map(({ _id, text, owner: { email } }) => (
                             <li key={_id} className="comment">
-                                <p>{username}: {text}</p>
+                                <p>{email}: {text}</p>
                             </li>
                         ))}
                         {/* <!-- Display paragraph: If there are no games in the database --> */}
@@ -101,19 +105,19 @@ export default function GameDetails() {
             <article className="create-comment">
                 <label>Add new comment:</label>
                 <form className="form" onSubmit={addCommentHandler}>
-                    <input 
+                    {/* <input    
                     type='text' 
                     name='username' 
                     placeholder='username'
                     value={usernameValue}
                     onChange={usernameChangeHandler}
                     // onBlur={usernameBlurHandler}
-                    />
-                    <textarea 
-                    name="comment" 
-                    placeholder="Comment......"
-                    value={commentValue}
-                    onChange={commentChangeHandler}
+                    /> */}
+                    <textarea
+                        name="comment"
+                        placeholder="Comment......"
+                        value={commentValue}
+                        onChange={commentChangeHandler}
                     ></textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
