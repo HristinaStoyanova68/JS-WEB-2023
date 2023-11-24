@@ -8,7 +8,7 @@ export const getAll = async () => {
     const result = await request.get(baseUrl);
 
     // console.log(result);
-    console.log(Object.values(result));
+    // console.log(Object.values(result));
     // return Object.values(result);//JSON Store service from server
 
     return result;//the server returns array with objects
