@@ -1,7 +1,6 @@
 
 import { Routes, Route } from 'react-router-dom';
 
-
 import { AuthProvider } from './contexts/authContext';
 import Path from './paths';
 
@@ -17,7 +16,7 @@ import Logout from './components/logout/Logout';
 function App() {
 
     return (
-        <AuthProvider value={values}>
+        <AuthProvider>
             <div id="box">
                 <Header />
                 <Routes>

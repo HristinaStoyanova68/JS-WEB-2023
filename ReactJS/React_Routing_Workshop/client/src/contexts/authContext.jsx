@@ -1,15 +1,13 @@
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import { useNavigate }from 'react-router-dom';
 
-import { createContext } from "react";
 import * as authService from '../services/authService';
 const AuthContext = createContext();
 
-AuthContext.displayName = 'AuthContext';
+// AuthContext.displayName = 'AuthContext';
 
 export const AuthProvider = ({
-    children, 
-    value
+    children,
 }) => {
     const navigate = useNavigate();
     const [auth, setAuth] = useState({});
@@ -56,7 +54,7 @@ export const AuthProvider = ({
     }
 
     return (
-        <AuthContext.Provider value={value}>
+        <AuthContext.Provider value={values}>
             {children}
         </AuthContext.Provider>
     );
