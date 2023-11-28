@@ -1,18 +1,31 @@
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useReducer, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-import AuthContext from '../../contexts/authContext';
 
 import * as gameService from '../../services/gameService';
 import * as commentService from '../../services/commentService';
+import AuthContext from '../../contexts/authContext';
+
+
+const reducer = (state, action) => {
+
+    switch (action?.type) {
+        case 'GET_ALL_GAMES':
+            return [...action.payload];
+        case 'ADD_COMMENT':
+            return [...state, action.payload];
+        default:
+            return state;
+    }
+}
 
 export default function GameDetails() {
-    const { email} = useContext(AuthContext);
+    const { email } = useContext(AuthContext);
     const [game, setGame] = useState({});
-    const [comments, setComments] = useState([]);
+    // const [comments, setComments] = useState([]);
+    const [comments, dispatch] = useReducer(reducer, []);
     // const [usernameValue, setUsernameValue] = useState('');
-    const [commentValue, setCommentValue] = useState('');
+    // const [commentValue, setCommentValue] = useState('');
     const { gameId } = useParams();
 
     useEffect(() => {
@@ -21,7 +34,13 @@ export default function GameDetails() {
             .catch(err => console.log(err));
 
         commentService.getAll(gameId)
-            .then(setComments)
+            // .then(setComments)
+            .then((result) => {
+                dispatch({
+                    type: 'GET_ALL_GAMES',
+                    payload: result,
+                })
+            })
             .catch(err => console.log(err));
     }, [gameId]);
 
@@ -35,28 +54,34 @@ export default function GameDetails() {
             formData.get('comment')
         );
 
-        //setComments(state => [...state, newComment]); //JSON Store service
-        setComments(state => [...state, { ...newComment, author: { email } }]); // Collections service
-        // console.log(newComment);
-        resetFormHandler();
+        newComment.owner = { email };
+
+        //     //setComments(state => [...state, newComment]); //JSON Store service
+        // setComments(state => [...state, { ...newComment, owner: { email } }]); // Collections service
+        dispatch({
+            type: 'ADD_COMMENT',
+            payload: newComment,
+        });
+        //     // console.log(newComment);
+        //     resetFormHandler();
     };
 
     // const usernameChangeHandler = (e) => {
     //     setUsernameValue(e.target.value);
     // };
 
-    const resetFormHandler = () => {
-        // setUsernameValue('');
-        setCommentValue('');
-    };
+    // const resetFormHandler = () => {
+    //     // setUsernameValue('');
+    //     setCommentValue('');
+    // };
 
     // const usernameBlurHandler = () => {
     //     console.log('on blur');
     // };
 
-    const commentChangeHandler = (e) => {
-        setCommentValue(e.target.value);
-    };
+    // const commentChangeHandler = (e) => {
+    //     setCommentValue(e.target.value);
+    // };
 
     return (
         <section id="game-details">
@@ -84,11 +109,12 @@ export default function GameDetails() {
                                 <p>{email}: {text}</p>
                             </li>
                         ))}
-                        {/* <!-- Display paragraph: If there are no games in the database --> */}
-                        {comments.length === 0 && (
-                            <p className="no-comment">No comments.</p>
-                        )}
                     </ul>
+                    {/* <!-- Display paragraph: If there are no games in the database --> */}
+                    {comments.length === 0 && (
+                        <p className="no-comment">No comments.</p>
+                    )}
+
 
 
                 </div>
@@ -108,16 +134,16 @@ export default function GameDetails() {
                     {/* <input    
                     type='text' 
                     name='username' 
-                    placeholder='username'
-                    value={usernameValue}
-                    onChange={usernameChangeHandler}
-                    // onBlur={usernameBlurHandler}
-                    /> */}
+                    placeholder='username' */}
+                    {/* // value={usernameValue}
+                    // onChange={usernameChangeHandler}
+                    // onBlur={usernameBlurHandler} */}
+                    {/* // /> */}
                     <textarea
                         name="comment"
                         placeholder="Comment......"
-                        value={commentValue}
-                        onChange={commentChangeHandler}
+                    // value={commentValue}
+                    // onChange={commentChangeHandler}
                     ></textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>

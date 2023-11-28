@@ -8,10 +8,10 @@ export const getAll = async (gameId) => {
         where: `gameId="${gameId}"`,
         load: `owner=_ownerId:users`,
     });
-
+    
     // const result = await request.get(baseUrl);//JSON Store service
     const result = await request.get(`${baseUrl}?${query}`);//Collections service
-
+    console.log(result);
     //Temp solution until migration to collection service
     // return Object.values(result).filter(comment => comment.gameId === gameId);  //JSON Store service
 
