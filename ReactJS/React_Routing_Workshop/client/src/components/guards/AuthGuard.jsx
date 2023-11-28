@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 import Path from "../../paths";
 import AuthContext from "../../contexts/authContext";
@@ -10,9 +10,5 @@ export default function AuthGuard(props) {
     if (!isAuthenticated) {
         return <Navigate to={Path.Login} />;
     }
-    return (
-        <>
-            {props.children}
-        </>
-    );
+    return <Outlet />;
 }

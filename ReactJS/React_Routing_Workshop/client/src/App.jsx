@@ -12,7 +12,8 @@ import Register from './components/register/Register';
 import Login from './components/login/Login';
 import GameDetails from './components/game-details/GameDetails';
 import Logout from './components/logout/Logout';
-import AuthGuard from './components/guards/BaseAuthGuard';
+import AuthGuard from './components/guards/AuthGuard';
+// import BaseAuthGuard from './components/guards/BaseAuthGuard';
 
 function App() {
 
@@ -23,11 +24,14 @@ function App() {
                 <Routes>
                     <Route path={Path.Home} element={<Home />} />
                     <Route path={Path.Games} element={<GameList />} />
-                    <Route path='/games/create' element={<AuthGuard><GameCreate /></AuthGuard>} />
                     <Route path='/games/:gameId' element={<GameDetails />} />
                     <Route path={Path.Register} element={<Register />} />
                     <Route path={Path.Login} element={<Login />} />
                     <Route path={Path.Logout} element={<Logout />} />
+
+                    <Route element={<AuthGuard />}>
+                    <Route path='/games/create' element={<GameCreate />} />
+                    </Route>
                 </Routes>
             </div>
         </AuthProvider>
