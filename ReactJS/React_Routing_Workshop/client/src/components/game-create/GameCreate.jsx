@@ -30,7 +30,7 @@ export default function GameCreate() {
 
     return (
         <section id="create-page" className="auth">
-            <form id="create" onSubmit={createGameSubmitHandler}>
+            <form id="create" onSubmit={createGameSubmitHandler} >
                 <div className="container">
 
                     <h1>Create Game</h1>

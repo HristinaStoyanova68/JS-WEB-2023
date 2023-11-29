@@ -24,13 +24,14 @@ function App() {
                 <Routes>
                     <Route path={Path.Home} element={<Home />} />
                     <Route path={Path.Games} element={<GameList />} />
-                    <Route path='/games/:gameId' element={<GameDetails />} />
+                    <Route path={Path.GameDetails} element={<GameDetails />} />
                     <Route path={Path.Register} element={<Register />} />
                     <Route path={Path.Login} element={<Login />} />
                     <Route path={Path.Logout} element={<Logout />} />
 
                     <Route element={<AuthGuard />}>
-                    <Route path='/games/create' element={<GameCreate />} />
+                    <Route path={Path.GameCreate} element={<GameCreate />} />
+                    <Route path={Path.GameEdit} element={<GameEdit />} />
                     </Route>
                 </Routes>
             </div>
