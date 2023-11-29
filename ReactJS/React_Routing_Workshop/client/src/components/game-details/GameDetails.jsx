@@ -5,19 +5,7 @@ import { useParams } from 'react-router-dom';
 import * as gameService from '../../services/gameService';
 import * as commentService from '../../services/commentService';
 import AuthContext from '../../contexts/authContext';
-
-
-const reducer = (state, action) => {
-
-    switch (action?.type) {
-        case 'GET_ALL_GAMES':
-            return [...action.payload];
-        case 'ADD_COMMENT':
-            return [...state, action.payload];
-        default:
-            return state;
-    }
-}
+import reducer from './commentsReducer';
 
 export default function GameDetails() {
     const { email } = useContext(AuthContext);
@@ -37,7 +25,7 @@ export default function GameDetails() {
             // .then(setComments)
             .then((result) => {
                 dispatch({
-                    type: 'GET_ALL_GAMES',
+                    type: 'GET_ALL_GOMMENTS',
                     payload: result,
                 })
             })
@@ -63,7 +51,7 @@ export default function GameDetails() {
             payload: newComment,
         });
         //     // console.log(newComment);
-        //     resetFormHandler();
+            // resetFormHandler();
     };
 
     // const usernameChangeHandler = (e) => {
@@ -71,8 +59,8 @@ export default function GameDetails() {
     // };
 
     // const resetFormHandler = () => {
-    //     // setUsernameValue('');
-    //     setCommentValue('');
+        // setUsernameValue('');
+        // setCommentValue('');
     // };
 
     // const usernameBlurHandler = () => {
@@ -106,7 +94,7 @@ export default function GameDetails() {
                         {/* <!-- list all comments for current game (If any) --> * */}
                         {comments.map(({ _id, text, owner: { email } }) => (
                             <li key={_id} className="comment">
-                                <p>{email}: {text}</p>
+                                <p>{email}: {text}</p>                                
                             </li>
                         ))}
                     </ul>
@@ -134,10 +122,10 @@ export default function GameDetails() {
                     {/* <input    
                     type='text' 
                     name='username' 
-                    placeholder='username' */}
-                    {/* // value={usernameValue}
-                    // onChange={usernameChangeHandler}
-                    // onBlur={usernameBlurHandler} */}
+                    placeholder='username'
+                    value={usernameValue}
+                    onChange={usernameChangeHandler} */}
+                    {/* // onBlur={usernameBlurHandler} */}
                     {/* // /> */}
                     <textarea
                         name="comment"
