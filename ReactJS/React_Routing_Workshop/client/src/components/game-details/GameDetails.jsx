@@ -1,6 +1,6 @@
 
 import { useContext, useEffect, useReducer, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import * as gameService from '../../services/gameService';
 import * as commentService from '../../services/commentService';
@@ -9,7 +9,7 @@ import reducer from './commentsReducer';
 import useForm from '../../hooks/useForm';
 
 export default function GameDetails() {
-    const { email } = useContext(AuthContext);
+    const { email, userId } = useContext(AuthContext);
     const [game, setGame] = useState({});
     const [comments, dispatch] = useReducer(reducer, []);
 
@@ -35,7 +35,7 @@ export default function GameDetails() {
         const newComment = await commentService.create(
             gameId,
             values.comment,
-            );
+        );
 
         newComment.owner = { email };
 
@@ -86,10 +86,13 @@ export default function GameDetails() {
                 </div>
 
                 {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
-                {/* <div className="buttons">
-                    <Link to="/edit" className="button">Edit</Link>
-                    <Link to="/delete" className="button">Delete</Link>
-                </div> */}
+                {userId === game._ownerId &&
+                    <div className="buttons">
+                        <Link to="/edit" className="button">Edit</Link>
+                        <Link to="/delete" className="button">Delete</Link>
+                    </div>
+                }
+
             </div>
 
             {/* <!-- Bonus --> */}
