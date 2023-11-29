@@ -6,14 +6,13 @@ import * as gameService from '../../services/gameService';
 import * as commentService from '../../services/commentService';
 import AuthContext from '../../contexts/authContext';
 import reducer from './commentsReducer';
+import useForm from '../../hooks/useForm';
 
 export default function GameDetails() {
     const { email } = useContext(AuthContext);
     const [game, setGame] = useState({});
-    // const [comments, setComments] = useState([]);
     const [comments, dispatch] = useReducer(reducer, []);
-    // const [usernameValue, setUsernameValue] = useState('');
-    // const [commentValue, setCommentValue] = useState('');
+
     const { gameId } = useParams();
 
     useEffect(() => {
@@ -22,7 +21,6 @@ export default function GameDetails() {
             .catch(err => console.log(err));
 
         commentService.getAll(gameId)
-            // .then(setComments)
             .then((result) => {
                 dispatch({
                     type: 'GET_ALL_GOMMENTS',
@@ -32,44 +30,24 @@ export default function GameDetails() {
             .catch(err => console.log(err));
     }, [gameId]);
 
-    const addCommentHandler = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
+    const addCommentHandler = async (values) => {
 
         const newComment = await commentService.create(
             gameId,
-            // formData.get('username'),
-            formData.get('comment')
-        );
+            values.comment,
+            );
 
         newComment.owner = { email };
 
-        //     //setComments(state => [...state, newComment]); //JSON Store service
-        // setComments(state => [...state, { ...newComment, owner: { email } }]); // Collections service
         dispatch({
             type: 'ADD_COMMENT',
             payload: newComment,
         });
-        //     // console.log(newComment);
-            // resetFormHandler();
     };
 
-    // const usernameChangeHandler = (e) => {
-    //     setUsernameValue(e.target.value);
-    // };
-
-    // const resetFormHandler = () => {
-        // setUsernameValue('');
-        // setCommentValue('');
-    // };
-
-    // const usernameBlurHandler = () => {
-    //     console.log('on blur');
-    // };
-
-    // const commentChangeHandler = (e) => {
-    //     setCommentValue(e.target.value);
-    // };
+    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+        comment: '',
+    })
 
     return (
         <section id="game-details">
@@ -94,7 +72,7 @@ export default function GameDetails() {
                         {/* <!-- list all comments for current game (If any) --> * */}
                         {comments.map(({ _id, text, owner: { email } }) => (
                             <li key={_id} className="comment">
-                                <p>{email}: {text}</p>                                
+                                <p>{email}: {text}</p>
                             </li>
                         ))}
                     </ul>
@@ -118,7 +96,7 @@ export default function GameDetails() {
             {/* <!-- Add Comment ( Only for logged-in users, which is not creators of the current game ) --> */}
             <article className="create-comment">
                 <label>Add new comment:</label>
-                <form className="form" onSubmit={addCommentHandler}>
+                <form className="form" onSubmit={onSubmit}>
                     {/* <input    
                     type='text' 
                     name='username' 
@@ -130,8 +108,8 @@ export default function GameDetails() {
                     <textarea
                         name="comment"
                         placeholder="Comment......"
-                    // value={commentValue}
-                    // onChange={commentChangeHandler}
+                        value={values.comment}
+                        onChange={onChange}
                     ></textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
