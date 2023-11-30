@@ -7,6 +7,8 @@ import * as commentService from '../../services/commentService';
 import AuthContext from '../../contexts/authContext';
 import reducer from './commentsReducer';
 import useForm from '../../hooks/useForm';
+import Path from '../../paths';
+import { pathToUrl } from '../../utils/pathUtils';
 
 export default function GameDetails() {
     const { email, userId } = useContext(AuthContext);
@@ -47,7 +49,7 @@ export default function GameDetails() {
 
     const { values, onChange, onSubmit } = useForm(addCommentHandler, {
         comment: '',
-    })
+    });
 
     return (
         <section id="game-details">
@@ -88,8 +90,8 @@ export default function GameDetails() {
                 {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
                 {userId === game._ownerId &&
                     <div className="buttons">
-                        <Link to="/edit" className="button">Edit</Link>
-                        <Link to="/delete" className="button">Delete</Link>
+                        <Link to={pathToUrl(Path.GameEdit, { gameId })} className="button">Edit</Link>
+                        <Link to={pathToUrl(Path.GameDelete, { gameId })} className="button">Delete</Link>
                     </div>
                 }
 

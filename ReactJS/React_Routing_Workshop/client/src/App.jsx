@@ -13,6 +13,7 @@ import Login from './components/login/Login';
 import GameDetails from './components/game-details/GameDetails';
 import Logout from './components/logout/Logout';
 import AuthGuard from './components/guards/AuthGuard';
+import GameEdit from './components/game-edit/GameEdit';
 // import BaseAuthGuard from './components/guards/BaseAuthGuard';
 
 function App() {

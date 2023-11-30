@@ -6,17 +6,17 @@ const baseUrl = 'http://localhost:3030/data/games'; //Collections service from s
 
 export const getAll = async () => {
     const result = await request.get(baseUrl);
-    
+
     // return Object.values(result);//JSON Store service from server
 
     return result;//the server returns array with objects
-}
+};
 
 export const getOne = async (gameId) => {
     const result = await request.get(`${baseUrl}/${gameId}`);
 
     return result;
-}
+};
 
 export const create = async (gameData) => {
     const result = await request.post(baseUrl, gameData);
@@ -31,6 +31,12 @@ export const create = async (gameData) => {
     // });
 
     // const result = await response.json();
+
+    return result;
+};
+
+export const edit = async (gameId, gameData) => {
+    const result = await request.put(`${baseUrl}/${gameId}`, gameData);
 
     return result;
 }
