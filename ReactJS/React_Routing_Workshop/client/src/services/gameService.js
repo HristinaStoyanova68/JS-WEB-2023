@@ -18,6 +18,33 @@ export const getOne = async (gameId) => {
     return result;
 };
 
+export const getLatestGames = async () => {
+    const query = encodeURIComponent(`offset=0&pageSize=3`);
+    console.log(query);
+
+    const result = await request.get(`${baseUrl}?sortBy=_createdOn%20desc&${query}`);
+
+    console.log(result);
+    return result;
+}
+
+// export const getLatestGames = async () => {
+//     const queryParams = {
+//         offset: 0,
+//         pageSize: 3
+//     };
+
+//     const result = await request.get(baseUrl, {
+//         params: {
+//             sortBy: '_createdOn desc',
+//             ...queryParams
+//         }
+//     });
+
+//     console.log(result);
+//     return result;
+// }
+
 export const create = async (gameData) => {
     const result = await request.post(baseUrl, gameData);
 
