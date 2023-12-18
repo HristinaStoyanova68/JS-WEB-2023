@@ -18,6 +18,13 @@ ol {
     padding-bottom: 1.5em;
 }
 
+.sitebar {
+    position: absolute;
+    top: 3;
+    right: 80px;
+    padding: 20px;
+}
+
 .sitebar p {
     margin-bottom: 10px;
     padding: 0;
@@ -41,11 +48,7 @@ ol {
     color: rgb(0, 102, 0);
 }
 
-.sitebar {
-    position: absolute;
-    top: 20px;
-    right: 50px;
-    background-color: #f0f0f0;
-    padding: 20px;
-    border: 1px solid #ccc;
+.post-content p {
+    margin-right: 30%;
 }
+

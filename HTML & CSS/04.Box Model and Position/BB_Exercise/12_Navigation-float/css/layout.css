@@ -1,7 +1,8 @@
 .site {
-    /* max-width: 35em; */
+    position: relative;
     margin: 2em;
-    margin-right: 30%;
+    margin-right: 10%;
+    margin-left: 5%;
 }
 
 .site-header {
