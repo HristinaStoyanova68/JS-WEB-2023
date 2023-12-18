@@ -1,0 +1,30 @@
+.site {
+    max-width: 35em;
+    margin: 2em auto;
+}
+
+.site-header {
+    padding: 1em;
+    position: relative;
+    border-bottom: 2px solid black;
+}
+
+.site-title {
+    margin: 0 0 -15px -15px;
+    /* margin-left: -15px;
+    margin-bottom: -15px; */
+    padding: 0;
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.main-nav {
+    position: absolute;
+    bottom: 50%;
+    right: 0;
+    transform: translateY(50%);
+}
