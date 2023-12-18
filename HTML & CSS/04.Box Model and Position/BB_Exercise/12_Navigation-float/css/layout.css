@@ -1,6 +1,7 @@
 .site {
-    max-width: 35em;
-    margin: 2em auto;
+    /* max-width: 35em; */
+    margin: 2em;
+    margin-right: 30%;
 }
 
 .site-header {

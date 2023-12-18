@@ -6,19 +6,46 @@ body {
     background-color: rgb(238, 238, 238);
 }
 
-body, input, textarea {
+body,
+input,
+textarea {
     font: inherit;
 }
 
-p, ul, ol {
+p,
+ul,
+ol {
     padding-bottom: 1.5em;
 }
 
-/* .main-header {
-    margin: 0 auto;
+.sitebar p {
+    margin-bottom: 10px;
+    padding: 0;
+    font-size: medium;
+    font-weight: bold;
 }
 
-.post-header {
-    margin-top: 0;
-    margin-bottom: 1em;
-} */
+.sitebar ul {
+    padding: 0;
+    margin: 0;
+    padding-left: 30px;
+}
+
+.sitebar li {
+    font-size: 12px;
+}
+
+.sitebar a {
+    display: block;
+    text-decoration: none;
+    color: rgb(0, 102, 0);
+}
+
+.sitebar {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
